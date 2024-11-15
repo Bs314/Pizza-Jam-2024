@@ -5,8 +5,7 @@ public class FollowMouse : MonoBehaviour
 
     Rigidbody2D rb2;
     CircleCollider2D cc2;
-    PlayerController pCont;
-    bool isColliderActive = false;
+    
     [SerializeField] float forceMagnitude = 10f;
 
     void Start()
