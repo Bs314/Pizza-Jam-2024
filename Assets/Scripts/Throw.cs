@@ -1,44 +1,46 @@
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Throw : MonoBehaviour
 {
     
     [SerializeField] GameObject bomerangPassive;
-    [SerializeField] GameObject bomerangActive;
-
+    [SerializeField] Slider bombomTimer;
+    
     bool isReturned = true;
+    public bool isItGone = false;
     void Start()
     {
-        
+        bombomTimer.value=bombomTimer.maxValue;
     }
 
    
     void Update()
     {
-
         if(Input.GetMouseButtonDown(0) && isReturned)
         {
+            bomerangPassive.transform.SetParent(null);
+            FollowMouse fm = bomerangPassive.GetComponent<FollowMouse>();
+            fm.enabled = true;
             isReturned = false;
-            bomerangPassive.SetActive(false);
-
-            Instantiate(bomerangActive, transform.position, quaternion.identity);
-
         }
-
     }
 
-
-    
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.CompareTag("bombom"))
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.CompareTag("bombom"))
         {
-            Destroy(other.gameObject);
-            isReturned = true;
-            bomerangPassive.SetActive(true);
+            isItGone = true;
+        }
+    }
 
-        }       
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("bombom") && isItGone)
+        {
+            isItGone = false;
+            isReturned = true;
+            bombomTimer.value=bombomTimer.maxValue;
+        }     
     }
 }
