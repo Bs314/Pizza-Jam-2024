@@ -118,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPoints: 10
   hitDuration: 1
+  exp: {fileID: 4117110915128420269, guid: e15b5c7c62ae532468ca862db0910f21, type: 3}
 --- !u!58 &4462232691211392523
 CircleCollider2D:
   m_ObjectHideFlags: 0

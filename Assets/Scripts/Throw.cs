@@ -22,6 +22,8 @@ public class Throw : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && isReturned)
         {
             bomerangPassive.transform.SetParent(null);
+            CircleCollider2D bombomCollider = bomerangPassive.GetComponent<CircleCollider2D>();
+            bombomCollider.enabled = true;
             FollowMouse fm = bomerangPassive.GetComponent<FollowMouse>();
             fm.enabled = true;
             isReturned = false;

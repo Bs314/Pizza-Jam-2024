@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -5,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
    
     [SerializeField] float hitPoints = 10f;
     [SerializeField] float hitDuration = 1f;
+    [SerializeField] GameObject exp;
     bool isHitted = false;
     float hitDurationSave;
     private void Start() {
@@ -28,7 +30,11 @@ public class EnemyHealth : MonoBehaviour
         {
             hitPoints -= damagePoints;
             if(hitPoints<=0)
-            {Destroy(gameObject);}
+            {
+                Instantiate(exp,transform.position,quaternion.identity);
+                Destroy(gameObject);
+            }
+            
             else
             {
                 isHitted = true;
