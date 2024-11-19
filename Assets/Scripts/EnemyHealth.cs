@@ -7,6 +7,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] float hitPoints = 10f;
     [SerializeField] float hitDuration = 1f;
     [SerializeField] GameObject exp;
+    [SerializeField] Animator animator;
+    
     bool isHitted = false;
     float hitDurationSave;
     private void Start() {
@@ -16,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
     private void Update() {
         if(isHitted)
         {
+            
             hitDuration -= Time.deltaTime;
             if(hitDuration<=0)
             {
@@ -31,12 +34,14 @@ public class EnemyHealth : MonoBehaviour
             hitPoints -= damagePoints;
             if(hitPoints<=0)
             {
+                
                 Instantiate(exp,transform.position,quaternion.identity);
                 Destroy(gameObject);
             }
             
             else
             {
+                
                 isHitted = true;
             }
         }
