@@ -10,6 +10,7 @@ public class FollowMouse : MonoBehaviour
     [SerializeField] float rotateSpeed = 10f;
     [SerializeField] float stopFactor = 3f;
     [SerializeField] float forceMagnitude = 10f;
+    [SerializeField] GameObject levelUpScreen;
     Slider bombomTime;
     CircleCollider2D bombomcollider;
 
@@ -92,6 +93,14 @@ public class FollowMouse : MonoBehaviour
             }
  
         }
+    }
+
+    public void IncreaseMaxTime()
+    {
+        maxTime += 1;
+        bombomTime.maxValue = maxTime;
+        levelUpScreen.SetActive(false);
+        Time.timeScale = 1f;
     }
 
 }

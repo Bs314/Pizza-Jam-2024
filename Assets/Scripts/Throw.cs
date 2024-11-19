@@ -8,8 +8,9 @@ public class Throw : MonoBehaviour
     
     [SerializeField] GameObject bomerangPassive;
     [SerializeField] Slider bombomTimer;
+    public GameObject levelUpScreen;
     
-    bool isReturned = true;
+    public bool isReturned = true;
     public bool isItGone = false;
     void Start()
     {
@@ -19,7 +20,8 @@ public class Throw : MonoBehaviour
    
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && isReturned)
+
+        if(Input.GetMouseButtonDown(0) && isReturned && !levelUpScreen.activeSelf)
         {
             bomerangPassive.transform.SetParent(null);
             CircleCollider2D bombomCollider = bomerangPassive.GetComponent<CircleCollider2D>();
